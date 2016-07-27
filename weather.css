@@ -1,0 +1,28 @@
+html{
+  margin: 0;
+  padding: 0;
+   background-color: blue;
+  color: white;
+ 
+}
+.wrapper{
+  background-color: blue;
+  color: white;
+  height: 100vh;
+  margin: 0;
+  padding-top: 10px;
+}
+.allData{
+ 
+ height: 100vh;
+}
+#header{
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+   font-size: 150%; 
+}
+#body{
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  margin: 10%;
+  font-size: 150%;
+}
+
