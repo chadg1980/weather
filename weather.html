@@ -21,9 +21,26 @@
     <h1>The Weather is...</h1>
     </div>
     <div id="body">
-      <p><span id="out"></span>
-      <p> The weather for <span id="userLocal"> </span> is <span id="userWeather"> undefined</span></p>
-      <p> The temperature is <span id="temp">temp</temp> as if <span id="time"> 00:00</span></p>
+      <div id="userInput">
+        <p id="instructions"> Enter the zipcode that you want to retreive weather:
+          <input type="number" id="thisZip" value="98201"></br>
+          <button id="getZip">Submit</button>
+        </p>
+        
+      </div>
+      <div id="error"></div>
+    <div id="success">
+      <p> The weather for 
+        <span id="userLocal"> </span> 
+          is 
+        <span id="userWeather"></span>
+      <br>
+      The temperature is <span id="temp"></span>
+    </p>
+    </div>
+    
+    <div id="error">
+    </div>
      
     </div> 
   </div>
