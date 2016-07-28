@@ -18,7 +18,7 @@
   $(document).ready(function(){
   $("#getZip").click(function(){
     
-    let zip = $('#thisZip')
+    let zip = $('#thisZip');
     if (zip[0].value === NaN || zip[0].value === null || zip[0].value === ""){
       $('#thisZip').css("border", "3px solid red");
       
@@ -27,8 +27,11 @@
       zip = zip[0].value;
       if (zip.length != 5){
         //console.log("zipcode in the US is 5 digits")
-        document.getElementById("error").innerHTML = "zipcode in the US is 5 digits";
+         $("#error").show();
+          $("#success").hide();
+        document.getElementById("error").innerHTML = "<p>zipcode in the US is 5 digits</p>";
       }else{
+        $("#error").hide();
         getTheWeather(zip);
       }
     }
