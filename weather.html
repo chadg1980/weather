@@ -8,8 +8,7 @@
     -->
 
      <link rel="stylesheet" type="text/css" href="weather.css">
-
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    
      
 
 </head>
@@ -21,33 +20,39 @@
       <h1>The Weather is...</h1>
     </div>
     <div id="body">
-      <div id="userInput">
-        <p id="instructions"> Enter the zipcode that you want to retreive weather:
-          <input type="number" id="thisZip" value="98290"></br>
-          <button id="getZip">Submit</button>
-        </p>
-       </div>
+      <!--  GeoLocation   -->
+
+
+      <!-- zipCode is used when geolocaion is not available -->
+      <div id="zipCode">
+        <div id="userInput">
+          <p id="instructions"> Enter the zipcode that you want to retreive weather:
+            <input type="number" id="thisZip" value="98290"><br>
+            <button id="getZip">Submit</button>
+          </p>
+        </div>
+        <div id="zipError">
+        </div>
+      </div>
       <div id="error">
       </div>
-      <div id="success">
-        <p>
-         
-          <span id="userLocal"> </span> 
-           
-          <span id="userWeather"></span>
-          <br>
-         <span id="temp"></span>
-        </p>
-      </div>
+        <div id="success">
+          <p>
+            <span id="userLocal"> </span> 
+            <span id="userWeather"></span>
+            <br>
+            <span id="temp"></span>
+          </p>
+        </div>
+        <div id="error">
+        </div>
     
-      <div id="error">
-      </div>
+
     </div> 
   </div>
 </div>
-  
-
-
-</body>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript" src="weather.js"></script>
+</body>
+
 </html>
