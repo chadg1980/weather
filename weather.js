@@ -6,7 +6,7 @@
     
     lat = position.coords.latitude;
     lon = position.coords.longitude;
-    console.log(lat + " " + lon);
+    
     getTheWeather(lat, lon);
   }
     function error(){
@@ -21,7 +21,7 @@
       $('#thisZip').css("border", "none");
       zip = zip[0].value;
       if (zip.length != 5){
-        //console.log("zipcode in the US is 5 digits")
+        
         $("#zipError").show();
         $("#success").hide();
         $("#error").html("<p>zipcode in the US is 5 digits</p>");
@@ -52,15 +52,15 @@ function getTheWeather(location, long){
   else{
     newURL = buildString(location, long);
   }
-  
-console.log(newURL);
+
 
  $.ajax(newURL, {
   success: function(response){
     if(response.cod != 404)
       show(response);
     else{
-     showError("error");
+     showError("404 Not Found");
+     throw new Error("404 Open Weather API Not Found");
     }
   },
   error : function(textStatus, errorThrown){
@@ -76,12 +76,12 @@ console.log(newURL);
 function buildString(location, lon){
    let openWeatherUnits = "&units=imperial"
    let openWeatherAppID = "&appid=76e02e63bfdb884252e9010384e00aa1"
-   let wxKey = "76e02e63bfdb884252e9010384e00aa1"
+   
    let fullURL = "";
 
   if (arguments.length == 1){
     let openWeatherzip = "http://api.openweathermap.org/data/2.5/weather?zip=";
-    fullURL = openWeatherzip + 98290 + ",us" + "&units=imperial" + "&appid=76e02e63bfdb884252e9010384e00aa1";
+    fullURL = openWeatherzip + 98290 + ",us" + openWeatherUnits +openWeatherAppID;
    
   }
   else{
@@ -96,13 +96,16 @@ function buildString(location, lon){
 
 function showError(e){
   $("#error").show();
-  document.getElementById("error").innerHTML = "error" + status;
-  //console.log("error: " + console.log(e));
+  document.getElementById("error").innerHTML = "An error occured " + status;
+  console.log("error: " + console.log(e));
 }
 
 function show(wxObject){
+  var thisIcon =  "http://openweathermap.org/img/w/" +wxObject.weather[0].icon + ".png";
+
   $("#userLocal").html("The weather for " +  wxObject.name + "  is ");
-  $("#userWeather").html(wxObject.weather[0].main);
+  $("#userWeather").html(wxObject.weather[0].main +"<img src="+ thisIcon +">" );
+  
   $("#temp").html("The temperature is  " + wxObject.main["temp"] + String.fromCharCode(176));
   $("#success").show();
 
