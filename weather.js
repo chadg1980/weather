@@ -107,11 +107,56 @@ function show(wxObject){
   $("#userWeather").html(wxObject.weather[0].main +"<img src="+ thisIcon +">" );
   
   $("#temp").html("The temperature is  " + wxObject.main["temp"] + String.fromCharCode(176));
+  backgroundPicker(wxObject.main["temp"]);
+  
   $("#success").show();
 
 }
+//The background image is chosend based on the temperature
+//tempF is temperature in fareinheit
+function backgroundPicker(tempF){
 
-
+  //cold  Anything below freezing
+  if (tempF <= 32){
+    $(".wrapper").css( "background-image", "url('https://upload.wikimedia.org/wikipedia/commons/7/71/Sea_ice_terrain.jpg')");
+    $(".wrapper").css("background-size", "100%");
+    console.log(tempF);
+    return;
+  }
+  //mild/cool temperatures
+  else if(tempF >32 && tempF <= 60){
+    $(".wrapper").css("background-image", "url('http://cdn.onlyinyourstate.com/wp-content/uploads/2016/04/barn-3-stone-ridge-road-ripley-700x463.jpg')");
+    $(".wrapper").css("background-size", "100%");
+     console.log(tempF);
+     return;
+  }
+  //mild warm temperatures
+  else if(tempF >60 && tempF <= 80){
+     $(".wrapper").css("background-image", "url('https://upload.wikimedia.org/wikipedia/commons/8/88/View_on_Sotsji_from_black_sea.jpg')");
+    $(".wrapper").css("background-size", "100%");
+     console.log(tempF);
+     return;
+  }
+  //hot temperatures
+  else if(tempF >80 && tempF <= 99){
+      $(".wrapper").css("background-image", "url('http://www.publicdomainpictures.net/pictures/150000/nahled/dog-on-the-beach-145520851094d.jpg')");
+      $(".wrapper").css("background-size", "100%");
+       return
+     }
+  //way too hot!
+  else if (tempF >100){
+    $(".wrapper").css("background-image", "url('https://wallpaperscraft.com/image/tree_dead_desert_branches_textures_stones_bushes_sand_61639_3840x2400.jpg')");
+    $(".wrapper").css("background-size", "100%");
+    return;
+  }
+  //if nothing else is chosen
+  else{
+    $(".wrapper").css("background-color", "blue");
+    console.log(tempF + " else?");
+     return;
+  }
+  return;
+}
 
 /*
 {"coord":
